@@ -1,286 +1,402 @@
 ---
-title: "R-Ladies Themed<br>xaringan Template"
-subtitle: "Presentation subtitle"
-author: "R-Ladies Global"
-institute: "Your Institute"
-date: "March 16th, 2021"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css:
-      - default
-      - rladies
-      - rladies-fonts
-      - css/rladies-mod.css
-    seal: false
+    css: [xaringan-themer.css, spacerock-theme.css]
     nature:
+      
       highlightStyle: github
       highlightLines: true
+      ratio: 16:9
       countIncrementalSlides: false
-      ratio: 4:3
+  revealjs::revealjs_presentation:
+    self_contained: false
+    reveal_plugins: ["menu"]
+     
 ---
 
-```{r setup, include = FALSE}
-# loading libraries
-library(tidyverse)
-library(palmerpenguins)
-library(fontawesome)
-
-# preset code chunk options
-knitr::opts_chunk$set(dpi = 300,            # ensures high resolution images
-                      echo = FALSE,         # FALSE: code chunks don't show
-                      warning = FALSE,      # FALSE: suppresses warning messages
-                      error = FALSE)        # FALSE: Suppresses error messages
-```
-
+background-image: url(img/spacerocks1.jpg)
 class: title-slide, center, middle, inverse
-background-image: url(img/PurpleSky.jpg)
 background-position: bottom
 background-size: cover
 
-# `r rmarkdown::metadata$title`
 
-Photo by [Vincentiu Solomon](https://unsplash.com/@vincentiu)
-
-???
-This slide uses:
-- a custom `title-slide` class that removes the slide number from the title slide
-- a background image
-  - background-image: url(img/PurpleSky.jpg)
-  - background-position: bottom
-  - background-size: cover
-
----
-class: inverse, middle, center
-
-<img style="border-radius: 50%;" 
-src="img/RLadiesGlobal.png"
-width="150px"
-alt="R-Ladies logo"
-/>
-
-# R-Ladies Global 
-
-[`r fontawesome::fa("link", a11y = "sem", fill = "#FFFFFF")` rladies.org](https://rladies.org)<br/>
-[`r fontawesome::fa("twitter", a11y = "sem", fill = "#FFFFFF")` @RLadiesGlobal](https://twitter.com/rladiesglobal)<br/>
-[`r fontawesome::fa("paper-plane", a11y = "sem", fill = "#FFFFFF")` info@rladies.org](mailto:info@rladies.org)<br>
-[`r fontawesome::fa("slack", a11y = "sem", fill = "#FFFFFF")` Join the Slack](https://rladies-community-slack.herokuapp.com/)
-
-???
-Hello! My name is R-Ladies Global and I'm excited to be here to help promote gender diversity in the R community.
-
-This slide uses:
-- `rmarkdown::metadata` to access YAML metadata
-- icons from the fontawesome package with the `ally = "sem"` (semantic attribute) accessibility feature.
-- image inserted using html code and including the alternative text attribute
-
---
-
-If you like this R-Ladies themed xaringan template, you can copy it to your computer: **usethis::use_course("spcanelon/RLadies-xaringan-template")**
-
-And learn how to deploy xaringan slides to GitHub Pages in this blog post:<br> [silvia.rbind.io/2021-03-16-deploying-xaringan-slides](https://silvia.rbind.io/2021-03-16-deploying-xaringan-slides)
-
-???
-This slide uses:
-- the `inverse`, `middle`, and `center` slide classes
-- an image inserted with html
-
----
-
-.left-column[
-# R-Ladies Global
+.title[
+.white[Space rocks!]
 ]
 
-.right-column[
-
-## Mission 
-
-R-Ladies is a worldwide organization whose mission is to promote Gender Diversity in the R community.
-
-The R community suffers from an underrepresentation of minority genders (including but not limited to cis/trans women, trans men, non-binary, genderqueer, agender) in every role and area of participation, whether as leaders, package developers, conference speakers, conference participants, educators, or users (see recent stats).
 
 
-.footnote[
 
-----
-Original source: https://rladies.org/about-us]
-]
+<style>
+.title{
+  font-size: 4em;
+  font-style: bold;
+}
+.white{
+  color: white;
+}
+</style>
 
-???
-This slide uses:
-- the `.left-column[]` and `.right-column[]` classes
-- a horizontal bar
-- the `.footnote[]` class
+
 
 ---
-# Making lists and emphasizing text
-
---
-
-The R-Ladies Community has:
-
---
-
-* 85,144 members
-
---
-
-* Across 56 countries
-
---
-
-* and 198 chapters worldwide
-
---
 
 
------
 
-And with the help of Markdown you can write text in **bold** and _italics_
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_duo_accent(
+  primary_color = "#003459",
+  secondary_color = "#007ea7",
+  text_color = "#00171f",
+  header_font_google = google_font("Josefin Sans", "300"),
+  text_font_google = google_font("Montserrat", "300", "300i"),
+  text_font_size = "1.5rem",
+  header_h1_font_size = "3rem",
+  header_h2_font_size = "2.25rem",
+  header_h3_font_size = "2.1rem",
+  code_font_google = google_font("Fira Mono")
 
---
-
-1. And make numbered lists
-1. like this one
-
-.footnote[
-These numbers come from the [Shiny R Community Explorer](https://benubah.github.io/r-community-explorer/rladies.html) developed by Ben Ubah
-]
-
-???
-This slide uses:
-- bullet list with `*`
-- incremental slides divided by `--`
-- numbered list with `1.`
-- a horizontal bar
-- the `.footnote[]` class
-
----
-# Inserting images
-
-```{r, echo = TRUE, fig.alt="World map with countries that have R-Ladies chapters highlighted in purple"}
-knitr::include_graphics("img/RLadiesMap.png")
+)
 ```
 
---
 
-> Note: You can use the `fig.alt` code chunk option to add alternative text to your images, that way they are accessible to screen reader users:
-- In code chunk: `{r, fig.alt = "<descriptive alt text>"}`.
-- Read more about this in [{knitr} NEWS.md](https://github.com/yihui/knitr/blob/master/NEWS.md#new-features-1)
+```{r xaringanExtra-search, echo=FALSE}
+xaringanExtra::use_search(show_icon = TRUE, position = c("bottom-right"))
+```
 
-???
-This slide uses:
-- an image inserted with `knitr::include_graphics()`
-- the `fig.alt =` code chunk option for alternative text
 
----
-# Tables and quotes
+```{r xaringanExtra-search-style, echo=FALSE}
+xaringanExtra::style_search(match_background = "light blue")
+```
 
-### Table
+
+```{r xaringan-tachyons, echo=FALSE}
+xaringanExtra::use_tachyons()
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "top")
+```
+
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+
+```
+
+```{r xaringanExtra-freezeframe, echo=FALSE}
+xaringanExtra::use_banner(
+  top_left = "",
+  top_right = "",
+  bottom_left = "estebanmenesesg@gamail.com",
+  exclude = "title-slide"
+)
+xaringanExtra::style_banner(
+  text_color = "#F0F8FF",
+  background_color = "#F0F8FF"
+)
+```
 
 .pull-left[
 
-`palmerpenguins::penguins`
+# **How space rocks were formed in first place?**
 
-The `penguins` dataset contains size measurements for adult penguins nesting near Palmer Station in Antarctica.
+# **What types of space rocks are there?**
 
-Measurements like `body_mass_g`
+]
+
+.pull-right[
+<img src="img/bingbang1.jpg" alt="drawing" width="900" height = "450"/>
+
+
+]
+
+
+
+
+---
+
+# **Origins**
+
+.pull-left[
+
+- Big Bang around 13.8 billion years (Energy, matter, Space, and time)
+
+
+- Single densest sphere 
+
+
+- How can we know this?
+
+
+- What was before?
+
+
+- How space rocks formed? (4.5 billons years) (from heavier)
+
+
+]
+
+.pull-right[
+<img src="img/bingbang2.jpg" alt="drawing" width="900" height = "400"/>
+]
+
+---
+# **Classification**
+
+.pull-left[
+
+- Asteroids (biggest)
+
+- Comets (mixture ice and rock)
+
+- Meteoroid (solid stuff coming from space)
+
+- Meteor (meteoroid getting hot and blazing by our atmosphere)
+
+- Meteorites (hits the ground)
+
+
+
 ]
 
 .pull-right[
 
-```{r}
-palmerpenguins::penguins %>%
-  select(species, island, body_mass_g) %>%
-  arrange(body_mass_g) %>%
-  head() %>%
-  knitr::kable(format = 'html')
-```
+<img src="img/classification.jpg" alt="drawing" width="800" height = "350"/>
 ]
 
-???
-This slide uses:
-- the `.pull-left[]` and `.pull-right[]` classes
-- an R code chunk to produce the html table
-
---
-
-### Quote
-
-> You can read more about the `palmerpenguins` data package authored and maintained by Allison Horst at [allisonhorst.github.io/palmerpenguins](https://allisonhorst.github.io/palmerpenguins/)
-
-???
-- a quote with `>`
 
 ---
-# Highlighting code
+# Group assignment
 
-`> This is what inline code looks like`
+- Solar system.
 
-You can highlight lines of code within code chunks using `#<<`:
+- We are going to make 3 groups each one one has to present one of the main space rocks (Asteroid, Comets, and Meteoroids).
 
-### Code
+- Have to tell us about 3 things:
 
-```r
-palmerpenguins::penguins %>%
-  ggplot(aes(x = island, y = body_mass_g)) +
-  geom_boxplot(aes(fill = island))               #<<
-```
-
-### Output
-
-```{r eval=FALSE, echo=TRUE}
-palmerpenguins::penguins %>%
-  ggplot(aes(x = species, y = body_mass_g)) +
-  geom_boxplot(aes(fill = island))               #<<
-```
-
-???
-This slide uses:
-- inline code highlighting with backticks ` `` `
-- a code chunk to produce a ggplot
+  - What are they made of?
+  - Where they come from?
+  - Its main classification.
+  
+You have 15 minutes to search and 2 minutes to present.
 
 ---
 
-```{r penguin-body-mass, eval=TRUE, echo=TRUE, fig.height = 4.5}
-palmerpenguins::penguins %>%
-  ggplot(aes(x = species, y = body_mass_g)) +
-  geom_boxplot(aes(fill = island))               
-```
 
-???
-This slide uses:
-- a code chunk to produce a ggplot
-- code chunk option `fig.height = 4.5` to control the figure height
+# **Asteroids (star-like)**
 
----
-class: middle, inverse, title-slide
+They are rocky, metallic or both, orbiting around the sun in between Mars and Jupiter (main belt). Classified as:
+
 
 .pull-left[
-# Thank you!
-<br/>
-## R-Ladies Global  
 
-### Promoting gender diversity in the R community
+- 75% carbon based (c-type).
+
+- 17% are silicon based (s-type).
+
+- 8% Miscellaneous (iron, nickel, and others - m-type).
+
+- Some have moons.
+
 ]
 
 .pull-right[
-.right[
-<img style="border-radius: 50%;"
-src="img/RLadiesGlobal.png"
-width="150px"
-alt="R-Ladies logo"
-/>
+*Ceres (400 km in radius)
 
-[`r fontawesome::fa("link", a11y = "sem", fill = "#FFFFFF")` rladies.org](https://rladies.org)<br/>
-[`r fontawesome::fa("twitter", a11y = "sem", fill = "#FFFFFF")` @RLadiesGlobal](https://twitter.com/rladiesglobal)<br/>
-[`r fontawesome::fa("paper-plane", a11y = "sem", fill = "#FFFFFF")` info@rladies.org](mailto:info@rladies.org)<br>
-[`r fontawesome::fa("slack", a11y = "sem", fill = "#FFFFFF")` Join the Slack](https://rladies-community-slack.herokuapp.com/)
-]]
+<img src="img/ceres.jpg" alt="drawing" width="800" height = "300"/>
+]
 
-???
-Thank you for joining me!
-You can find my contact information linked on this slide if you want to get in touch, and I'm happy to take any questions.
+---
+# **Comets**
 
-This slide also uses:
-- the `title-slide` class, to remove the slide number at the bottom
+.pull-left[
+
+- Signs for predictions.
+
+- Comets are a balance mixture of ice and rock. 
+
+- Solid part called nucleus and gas tail called coma
+
+- Comets have 2 tails: the gas tail and the dust tail.
+]
+
+
+.pull-right[
+*Halley's Comet
+
+<img src="img/halley.jpg" alt="drawing" width="800" height = "300"/>
+]
+
+
+---
+
+# **Comets**
+
+.pull-left[
+
+Comets are classified by their orbits:
+
+- Short period comets (< 200 years). 
+  
+  - Orbits as planets.
+  - From scatter disk.
+
+- Long-term comets (> 200 years).
+
+  - They can appear everywhere.
+  - From Oort cloud.
+]
+
+.pull-right[
+*Orbits
+
+<img src="img/orbits.jpg" alt="drawing" width="800" height = "400"/>
+]
+
+---
+background-image: url(img/kuiper.png)
+background-position: 90% 90%
+background-size: 50%
+
+
+## **Where they go?**
+
+--
+
+- They evaporate becoming in asteroids
+
+## **Can they hit the Earth?**
+
+--
+
+- Yes (live formed)
+
+*Pluto is in the Kuiper belt object.
+
+
+---
+background-image: url(img/ort.jpg)
+background-position: 50% 50%
+background-size: contain
+
+# **Oort Cloud**
+
+.pull-left[
+.white[
+
+- Reach as 1 light year.
+
+- No one knows a Oort object.
+
+- These objects probably formed close to the sun.
+]
+]
+<style>
+.white{
+  color: white;
+}
+</style>
+---
+background-image: url(img/meteor.jpg)
+background-position: 50% 50%
+background-size: contain
+
+# **What is a shooting star?**
+
+
+--
+
+.white[
+
+
+
+- Meteors have a huge amount of kinetic energy.
+
+- As they hit our atmosphere they slow down.
+
+- All that energy has to go somewhere.
+
+- That energy is converted in light and heat.
+
+]
+
+<style>
+.white{
+  color: white;
+}
+</style>
+
+---
+background-image: url(img/shower.jpg)
+background-position: 90% 50%
+background-size: 50%
+
+## **Where meteors come from?**
+
+--
+
+- From asteroids.
+
+### **What about meteors showers?**
+
+--
+
+- They come from comet debris. 
+
+- Named after the constellation.
+
+- They are easy to see (after midnight).
+
+
+
+---
+# **Bolides or fireball**
+
+.pull-left[
+
+- These are extremely bright meteors.
+
+- Sometime the pressure breaks them raining dozens or hundreds.
+
+- They don't cause fires.
+
+]
+
+.pull-right[
+<img src="img/fireball.jpg" alt="drawing" width="900" height = "400"/>
+
+]
+---
+# **Meteors classification**
+
+.pull-left[
+
+3 broad categories:
+
+1. Stony.
+
+1. Iron.
+
+1. Stony iron.
+
+*The majority of them are stony.
+]
+
+.pull-right[
+<img src="img/fireball.jpg" alt="drawing" width="900" height = "400"/>
+
+]
+---
+
+# **Recap**
+
+# **How space rocks were formed in first place?**
+
+# **What types of space rocks are there?**
+
+
+
+
